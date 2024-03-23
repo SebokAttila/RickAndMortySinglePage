@@ -1,6 +1,6 @@
 ﻿namespace RickAndMortySinglePage.Models
 {
-    public class Information
+    public class Info
     {
         public int Count { get; set; }
         public int Pages { get; set; }

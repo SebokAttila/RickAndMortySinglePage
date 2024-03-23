@@ -1,0 +1,52 @@
+﻿@using RickAndMortySinglePage.Models;
+
+@model CharacterResponse
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width = device-width" />
+        <link rel="stylesheet" href="~/bootstrap/css/bootstrap.css" />
+    </head>
+    <body>
+    <div>
+        @if (!string.IsNullOrEmpty(Model.Info.Prev))
+        {
+            <a href="@Url.Action("Index","Character", new{page = Model.Info.Prev.Split('=').Last()})">Previous</a>
+        }
+        @if (!string.IsNullOrEmpty(Model.Info.Next))
+        {
+            <a href="@Url.Action("Index","Character", new{page = Model.Info.Next.Split('=').Last()})">Next</a>
+        }
+    </div>
+    <form method="get" action="@Url.Action("Index","Character")">
+        <input type="text" name="query" placeholder="Character name" />
+        <button type="submit" class="btn btn-primary">Search</button>
+        @* <input type="submit"  value="Search" /> *@
+    </form>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Avatar</th>
+                <th>Name</th>
+                <th>Species</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+        @foreach (var character in Model.Results)
+        {           
+                <tr>
+                    <td><img src="@character.Image" alt="@character.Name" /></td>
+                    <td><a href="@Url.Action("Profile", "Character", new{id = character.ID})">@character.Name</a></td>
+                    <td>@character.Species</td>
+                    <td>@character.Status</td>
+                </tr>            
+        }
+        </tbody>
+    </table>
+    </body>
+</html>
+
+
+

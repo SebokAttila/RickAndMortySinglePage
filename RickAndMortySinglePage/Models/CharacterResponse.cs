@@ -2,7 +2,7 @@
 {
     public class CharacterResponse
     {
-        public Information Information { get; set; }
-        public List<Character> Characters { get; set;}
+        public Info Info { get; set; }
+        public List<Character> Results { get; set;}
     }
 }
