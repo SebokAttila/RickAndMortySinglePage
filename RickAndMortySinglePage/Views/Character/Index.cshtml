@@ -24,16 +24,13 @@
         @* <input type="submit"  value="Search" /> *@
     </form>
 
-    <table>
-        <thead>
+    <table>       
             <tr>
                 <th>Avatar</th>
                 <th>Name</th>
                 <th>Species</th>
                 <th>Status</th>
-            </tr>
-        </thead>
-        <tbody>
+            </tr>               
         @foreach (var character in Model.Results)
         {           
                 <tr>
@@ -42,8 +39,7 @@
                     <td>@character.Species</td>
                     <td>@character.Status</td>
                 </tr>            
-        }
-        </tbody>
+        }        
     </table>
     </body>
 </html>
