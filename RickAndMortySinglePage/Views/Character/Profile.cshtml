@@ -10,10 +10,14 @@
         <p>Species: @Model.Species</p>
         <p>Type: @Model.Type</p>
         <p>Gender: @Model.Gender</p>
-        @foreach (var episode in Model.Episode)
+        @if (Model.Episode != null)
         {
-        <p>Episode: @episode</p>
+            @foreach (var episode in Model.Episode)
+            {
+                <p>Episode: @episode</p>
+            }
         }
+    
 
         <h2>Location</h2>
         <p>Name: @Model.Location.name</p>              
