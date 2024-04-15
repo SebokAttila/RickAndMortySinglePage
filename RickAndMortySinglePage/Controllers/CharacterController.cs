@@ -52,5 +52,23 @@ namespace RickAndMortySinglePage.Controllers
                 return View(new Character());
             }
         }
+        [HttpGet]
+        public async Task<IActionResult> Location(int id)
+        {
+            var request = new HttpRequestMessage(HttpMethod.Get,
+                $"https://rickandmortyapi.com/api/location/{id}");
+            var client = clientFactory.CreateClient();
+            var response = await client.SendAsync(request);
+            if (response.IsSuccessStatusCode)
+            {
+                var responseStream = await response.Content.ReadAsStringAsync();
+                var model = JsonConvert.DeserializeObject<Location>(responseStream);
+                return View(model);
+            }
+            else
+            {
+                return View(new Location());
+            }
+        }
     }
 }

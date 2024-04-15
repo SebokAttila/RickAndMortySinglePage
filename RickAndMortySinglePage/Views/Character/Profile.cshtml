@@ -1,16 +1,24 @@
 ﻿@using RickAndMortySinglePage.Models;
 @model Character
-<!DOCTYPE html>
-<html>
-    <head>
 
-    </head>
+
     <body>
         <h1>@Model.Name</h1>
         <img src="@Model.Image" alt="@Model.Name" />
         <p>Species: @Model.Species</p>
         <p>Status: @Model.Status</p>
+        <p>Species: @Model.Species</p>
+        <p>Type: @Model.Type</p>
+        <p>Gender: @Model.Gender</p>
+        @foreach (var episode in Model.Episode)
+        {
+        <p>Episode: @episode</p>
+        }
 
-        <a href="/Character">Back</a>
+        <h2>Location</h2>
+        <p>Name: @Model.Location.name</p>              
+        <a href="@Url.Action("Location", "Character", new{id = Model.Location.id})">@Model.Location.name</a>
+
+    <h2><a href="/Character">Back</a></h2>
     </body>
-</html>
+
